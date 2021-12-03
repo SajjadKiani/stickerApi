@@ -1,0 +1,6 @@
+*.ini
+*.webp
+__pycache__
+*.session
+*.session-journal
+venv
