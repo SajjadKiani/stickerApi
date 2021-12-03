@@ -1,3 +1,3 @@
 # StickerApi
 
-reply messages with sticker
+reply messages with sticker in telegram
