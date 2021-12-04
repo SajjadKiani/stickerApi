@@ -59,7 +59,7 @@ class WritePic:
             # text
             self.draw.text( ((p_x - t_x)/2 , (p_y - t_y )/2 ),s,(255,255,255),font=self.font)
 
-            t_y = t_y + self.draw.textsize(s,font=self.font)[1] + 50
+            t_y = t_y - self.draw.textsize(s,font=self.font)[1] - 50
 
 
         # shadow
