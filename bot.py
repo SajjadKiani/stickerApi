@@ -15,7 +15,7 @@ print ('Start')
 @app.on_message()
 def my_handler(client, message):
     
-    if  '/sticker' in message['text']:
+    if  '/sticker' in str(message['text']) and 'Sjd0k' in str(message['from_user']['username']):
         print (message['reply_to_message']['from_user']['first_name']+ " : " +message['reply_to_message']['text'])
         
         # create picture

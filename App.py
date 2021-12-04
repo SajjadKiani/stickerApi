@@ -3,9 +3,6 @@ import arabic_reshaper
 from bidi.algorithm import get_display
 
 class WritePic: 
-    img = Image.open ('files/pic.png')
-    draw = ImageDraw.Draw(img)
-    font = ImageFont.truetype('files/Vazir.ttf',35,encoding='unic')
 
     def __init__(self , text ,writer):
         reshaped_text = arabic_reshaper.reshape(text)
@@ -13,6 +10,11 @@ class WritePic:
 
         reshaped_text = arabic_reshaper.reshape(writer)
         self.writer = ': ' + get_display(reshaped_text)
+
+        self.img = Image.open ('files/pic.png')
+        self.draw = ImageDraw.Draw(self.img)
+        self.font = ImageFont.truetype('files/Vazir.ttf',35,encoding='unic')
+
 
 
     def find_x (self , text:str):
@@ -59,7 +61,7 @@ class WritePic:
 
 
         # shadow
-        w_x = self.find_x(self.writer)+100
+        w_x = (p_x - self.find_x(self.writer))/2
         w_font = ImageFont.truetype('files/Vazir.ttf',25,encoding='unic')
         self.draw.text( (w_x-3 , 50 ),self.writer,(255,255,255),font=w_font)
         self.draw.text( (w_x+3 , 50 ),self.writer,(255,255,255),font=w_font)
