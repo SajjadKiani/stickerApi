@@ -5,7 +5,7 @@ from bidi.algorithm import get_display
 class WritePic: 
     img = Image.open ('files/pic.png')
     draw = ImageDraw.Draw(img)
-    # font = ImageFont.truetype(35,encoding='unic')
+    font = ImageFont.truetype('files/vazir.ttf',35,encoding='unic')
 
     def __init__(self , text ,writer):
         reshaped_text = arabic_reshaper.reshape(text)
@@ -16,7 +16,7 @@ class WritePic:
 
 
     def find_x (self , text:str):
-        return self.draw.textsize(text)[0]
+        return self.draw.textsize(text,font=self.font)[0]
 
     def find_line (self):
         strs = self.text.split(' ')
@@ -24,7 +24,7 @@ class WritePic:
         w = self.img.size[0]
         res = ''
         i=0
-        while ( i < len(strs) and self.draw.textsize(res)[0]+300 < w):
+        while ( i < len(strs) and self.draw.textsize(res,font=self.font)[0]+300 < w):
             if (res == ''):
                 res = strs[i]
             else:
@@ -47,28 +47,25 @@ class WritePic:
             t_x = self.find_x(s)
 
             # shadow
-            self.draw.text( (((p_x - t_x)/2 )-3 , ((p_y - t_y )/2 ) ),s,(255,255,255))
-            self.draw.text( (((p_x - t_x)/2 )+3 , ((p_y - t_y )/2 ) ),s,(255,255,255))
-            self.draw.text( (((p_x - t_x)/2 ) , ((p_y - t_y )/2 )-3 ),s,(255,255,255))
-            self.draw.text( (((p_x - t_x)/2 ) , ((p_y - t_y )/2 )+3 ),s,(255,255,255))
+            self.draw.text( (((p_x - t_x)/2 )-3 , ((p_y - t_y )/2 ) ),s,(255,255,255),font=self.font)
+            self.draw.text( (((p_x - t_x)/2 )+3 , ((p_y - t_y )/2 ) ),s,(255,255,255),font=self.font)
+            self.draw.text( (((p_x - t_x)/2 ) , ((p_y - t_y )/2 )-3 ),s,(255,255,255),font=self.font)
+            self.draw.text( (((p_x - t_x)/2 ) , ((p_y - t_y )/2 )+3 ),s,(255,255,255),font=self.font)
 
             # text
-            self.draw.text( ((p_x - t_x)/2 , (p_y - t_y )/2 ),s,(0,0,0))
+            self.draw.text( ((p_x - t_x)/2 , (p_y - t_y )/2 ),s,(0,0,0),font=self.font)
 
-            t_y = t_y + self.draw.textsize(s)[1] + 50
+            t_y = t_y + self.draw.textsize(s,font=self.font)[1] + 50
 
 
         # shadow
         w_x = self.find_x(self.writer)+100
-        # w_font = ImageFont.truetype(25,encoding='unic')
-        self.draw.text( (w_x-3 , 50 ),self.writer,(255,255,255))
-        self.draw.text( (w_x+3 , 50 ),self.writer,(255,255,255))
-        self.draw.text( (w_x , 50-3 ),self.writer,(255,255,255))
-        self.draw.text( (w_x , 50+3 ),self.writer,(255,255,255))
+        w_font = ImageFont.truetype('files/vazir.ttf',25,encoding='unic')
+        self.draw.text( (w_x-3 , 50 ),self.writer,(255,255,255),font=w_font)
+        self.draw.text( (w_x+3 , 50 ),self.writer,(255,255,255),font=w_font)
+        self.draw.text( (w_x , 50-3 ),self.writer,(255,255,255),font=w_font)
+        self.draw.text( (w_x , 50+3 ),self.writer,(255,255,255),w_font)
 
-        self.draw.text( (w_x,50 ),self.writer ,(255,2,2))
+        self.draw.text( (w_x,50 ),self.writer ,(255,2,2),font=w_font)
 
         self.img.save('files/res.webp')
-
-# if __name__=='__main__':
-#     WritePic('salam','baba').write()
