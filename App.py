@@ -5,8 +5,10 @@ from bidi.algorithm import get_display
 class WritePic: 
 
     def __init__(self , text ,writer):
-        reshaped_text = arabic_reshaper.reshape(text)
-        self.text = get_display(reshaped_text)
+
+        # for linux
+        # reshaped_text = arabic_reshaper.reshape(text)
+        self.text = text # get_display(reshaped_text)
 
         reshaped_text = arabic_reshaper.reshape(writer)
         self.writer = ': ' + get_display(reshaped_text)
