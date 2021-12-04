@@ -51,13 +51,13 @@ class WritePic:
             t_x = self.find_x(s)
 
             # shadow
-            self.draw.text( (((p_x - t_x)/2 )-3 , ((p_y - t_y )/2 ) ),s,(255,255,255),font=self.font)
-            self.draw.text( (((p_x - t_x)/2 )+3 , ((p_y - t_y )/2 ) ),s,(255,255,255),font=self.font)
-            self.draw.text( (((p_x - t_x)/2 ) , ((p_y - t_y )/2 )-3 ),s,(255,255,255),font=self.font)
-            self.draw.text( (((p_x - t_x)/2 ) , ((p_y - t_y )/2 )+3 ),s,(255,255,255),font=self.font)
+            self.draw.text( (((p_x - t_x)/2 )-5 , ((p_y - t_y )/2 ) ),s,(0,0,0),font=self.font)
+            self.draw.text( (((p_x - t_x)/2 )+5 , ((p_y - t_y )/2 ) ),s,(0,0,0),font=self.font)
+            self.draw.text( (((p_x - t_x)/2 ) , ((p_y - t_y )/2 )-5 ),s,(0,0,0),font=self.font)
+            self.draw.text( (((p_x - t_x)/2 ) , ((p_y - t_y )/2 )+5 ),s,(0,0,0),font=self.font)
 
             # text
-            self.draw.text( ((p_x - t_x)/2 , (p_y - t_y )/2 ),s,(0,0,0),font=self.font)
+            self.draw.text( ((p_x - t_x)/2 , (p_y - t_y )/2 ),s,(255,255,255),font=self.font)
 
             t_y = t_y + self.draw.textsize(s,font=self.font)[1] + 50
 
