@@ -5,7 +5,7 @@ from bidi.algorithm import get_display
 class WritePic: 
     img = Image.open ('files/pic.png')
     draw = ImageDraw.Draw(img)
-    font = ImageFont.truetype('files/vazir.ttf',35,encoding='unic')
+    font = ImageFont.truetype('files/Vazir.ttf',35,encoding='unic')
 
     def __init__(self , text ,writer):
         reshaped_text = arabic_reshaper.reshape(text)
@@ -60,7 +60,7 @@ class WritePic:
 
         # shadow
         w_x = self.find_x(self.writer)+100
-        w_font = ImageFont.truetype('files/vazir.ttf',25,encoding='unic')
+        w_font = ImageFont.truetype('files/Vazir.ttf',25,encoding='unic')
         self.draw.text( (w_x-3 , 50 ),self.writer,(255,255,255),font=w_font)
         self.draw.text( (w_x+3 , 50 ),self.writer,(255,255,255),font=w_font)
         self.draw.text( (w_x , 50-3 ),self.writer,(255,255,255),font=w_font)
