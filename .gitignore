@@ -1,4 +1,3 @@
-*.ini
 *.webp
 __pycache__
 *.session
